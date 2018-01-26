@@ -16,6 +16,7 @@ class TableShow extends Component {
       return check.tableId === this.props.match.params.id;
     });
     this.lookForActiveCheck(currentCheck);
+
   }
 
   lookForActiveCheck(currentCheck) {
@@ -27,10 +28,19 @@ class TableShow extends Component {
     }
   }
 
+
+
   render() {
     return (
-      <div>
-        Table show component
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6 check-container">
+            This is the check
+          </div>
+          <div className="col-lg-6 menu-container">
+            This is the menu
+          </div>
+        </div>
       </div>
     );
   }
