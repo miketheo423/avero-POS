@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fetchTables, fetchChecks } from '../actions/index';
+import { fetchTables, fetchChecks, fetchMenuItems } from '../actions/index';
 import _ from 'lodash';
-import axios from 'axios';
+
 
 class TableIndex extends Component {
 
   componentDidMount() {
     this.props.fetchTables();
     this.props.fetchChecks();
+    this.props.fetchMenuItems();
   }
 
   renderTables() {
@@ -44,4 +45,4 @@ function mapStateToProps(state) {
     checks: state.checks };
 }
 
-export default connect(mapStateToProps, { fetchTables, fetchChecks })(TableIndex);
+export default connect(mapStateToProps, { fetchTables, fetchChecks, fetchMenuItems })(TableIndex);

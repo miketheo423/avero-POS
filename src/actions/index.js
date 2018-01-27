@@ -4,6 +4,7 @@ export const FETCH_TABLES = 'FETCH_TABLES';
 export const CREATE_CHECK = 'CREATE_CHECK';
 export const FETCH_CHECKS = 'FETCH_CHECKS';
 export const FETCH_ONE_CHECK = 'FETCH_ONE_CHECK';
+export const FETCH_MENU_ITEMS = 'FETCH_MENU_ITEMS';
 
 const ROOT_URL = 'https://check-api.herokuapp.com';
 const AUTH_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI3M2I1MzJiLWJlZWItNDExYi1hMTg5LWJjZmJlNWVlYzM5MCIsIm5hbWUiOiJqdW5pb3IgIzgifQ.FOOXhSHXPe3oJ0gs_eCJkZK67N5OEEqrG-IMDxBvZ8w';
@@ -73,4 +74,17 @@ export function fetchOneCheck(checkId) {
     type: FETCH_ONE_CHECK,
     payload: request
   };
+}
+
+export function fetchMenuItems() {
+  const request = axios({
+    url: `${ROOT_URL}/items`,
+    method: 'get',
+    headers: { 'Authorization' : AUTH_KEY }
+  });
+
+  return {
+    type: FETCH_MENU_ITEMS,
+    payload: request
+  }
 }

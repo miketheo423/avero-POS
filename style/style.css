@@ -3,3 +3,43 @@ body {
   width: 100%;
   height: 100vh;
 }
+
+.check-container {
+  height: 90vh;
+  border: 3px solid black;
+}
+
+.menu-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.menu-item {
+  display: table;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  line-height: 24px;
+  height: 140px;
+  width: 140px;
+  text-align: center;
+  background: #dd5638;
+  margin: 20px;
+}
+
+.menu-item:hover {
+  opacity: 0.7;
+}
+
+.menu-content {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+.menu-content span {
+  display: block;
+  font-size: 20px;
+  font-weight: normal;
+}

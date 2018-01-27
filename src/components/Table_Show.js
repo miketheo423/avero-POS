@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createCheck, fetchChecks } from '../actions';
+import { createCheck, fetchMenuItems } from '../actions';
 
 
 class TableShow extends Component {
@@ -16,7 +16,19 @@ class TableShow extends Component {
       return check.tableId === this.props.match.params.id;
     });
     this.lookForActiveCheck(currentCheck);
+  }
 
+  renderMenu() {
+    return _.map(this.props.menu, item => {
+      return (
+        <div className="menu-item">
+          <div className="menu-content">
+            <span>{item.name}</span>
+            <span>{item.price}</span>
+          </div>
+        </div>
+      )
+    });
   }
 
   lookForActiveCheck(currentCheck) {
@@ -32,29 +44,31 @@ class TableShow extends Component {
 
   render() {
     return (
-      <div className="container">
+      // <div className="container">
         <div className="row">
-          <div className="col-lg-6 check-container">
+          <div className="col-lg-4 col-sm-4 check-container">
             This is the check
           </div>
-          <div className="col-lg-6 menu-container">
-            This is the menu
+          <div className="col-lg-8 col-sm-8 menu-container">
+            {this.renderMenu()}
           </div>
         </div>
-      </div>
+      // </div>
     );
   }
 
 }
 
-function mapStateToProps({ tables, checks }, ownProps) {
+function mapStateToProps({ tables, checks, menu }, ownProps) {
   // console.log(tables);
   // console.log(checks);
   // console.log(currentCheck);
+  console.log(menu);
   return { 
     table: tables[ownProps.match.params.id],
     checks: checks,
+    menu: menu
   }
 }
 
-export default connect(mapStateToProps, { createCheck, fetchChecks })(TableShow);
+export default connect(mapStateToProps, { createCheck, fetchMenuItems })(TableShow);
