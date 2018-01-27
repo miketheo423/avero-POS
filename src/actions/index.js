@@ -9,11 +9,6 @@ export const FETCH_MENU_ITEMS = 'FETCH_MENU_ITEMS';
 const ROOT_URL = 'https://check-api.herokuapp.com';
 const AUTH_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI3M2I1MzJiLWJlZWItNDExYi1hMTg5LWJjZmJlNWVlYzM5MCIsIm5hbWUiOiJqdW5pb3IgIzgifQ.FOOXhSHXPe3oJ0gs_eCJkZK67N5OEEqrG-IMDxBvZ8w';
 
-// test comment for git push
-// test comment for git push
-// test comment for git push
-
-
 export function fetchTables() {
   const request = axios({
     url: `${ROOT_URL}/tables`,
