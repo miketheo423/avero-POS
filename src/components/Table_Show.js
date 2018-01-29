@@ -10,13 +10,8 @@ class TableShow extends Component {
     this.filterCheck();
   }
 
-  componentDidMount() {
-    // this.filterCheck();
-  }
-
   filterCheck() {
     let checks = this.props.checks;
-    console.log(checks);
     let currentCheck = checks.find((check) => {
       return check.tableId === this.props.match.params.id;
     });
@@ -27,12 +22,10 @@ class TableShow extends Component {
     let tableId = this.props.match.params.id;
     if(!currentCheck) {
      this.props.createCheck(tableId).then((response) => {
-       console.log(response);
        let checkId = response.payload.data.id;
        this.props.fetchOneCheck(checkId);
      });
     } else {
-      console.log(currentCheck);
       let checkId = currentCheck.id;
       this.props.fetchOneCheck(checkId);
     }
@@ -43,11 +36,18 @@ class TableShow extends Component {
     this.props.fetchOneCheck(checkId);
   }
 
+  voidItem(checkId, itemId) {
+    this.props.voidItem(checkId, itemId);
+    this.props.fetchOneCheck(checkId);
+  }
+
   renderCheck() {
     return _.map(this.props.oneCheck.orderedItems, checkItem => {
       let itemName = '';
       let price = '';
       let checkItemName = checkItem.itemId;
+      let itemId = checkItem.id;
+      let checkId = this.props.oneCheck.id;
         switch(checkItemName) {
           case "348e706c-ab3b-4a6e-a391-8de96ac7e0a3":
             itemName = "PULL-APART BREAD";
@@ -102,7 +102,7 @@ class TableShow extends Component {
           <div key={checkItem.id} className="check-item list-group-item">
             <span>{itemName} / {price}</span>
             <div className="text-xs-right">
-              <button className="btn btn-danger">Void</button>
+              <button className="btn btn-danger" onClick={() => this.voidItem(checkId, itemId)}>Void</button>
             </div>
           </div>
         )

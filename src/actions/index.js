@@ -106,7 +106,7 @@ export function addItem(checkId, itemId) {
   }
 }
 
-export function voidItem(itemId) {
+export function voidItem(checkId, itemId) {
   const request = axios({
     url: `${ROOT_URL}/checks/${checkId}/voidItem`,
     method: 'put',
