@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { createCheck, fetchChecks, fetchMenuItems, fetchOneCheck, addItem, voidItem } from '../actions';
+import Header from './Header';
 
 
 class TableShow extends Component {
@@ -32,6 +33,7 @@ class TableShow extends Component {
   }
 
   addItem(checkId, itemId) {
+    console.log('clicked');
     this.props.addItem(checkId, itemId);
     this.props.fetchOneCheck(checkId);
   }
@@ -139,16 +141,19 @@ class TableShow extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col-lg-4 col-sm-4 check-container">
-          {this.renderCheck()}
-        </div>
-        <div className="col-lg-8 col-sm-8 menu-container">
-          {this.renderMenu()}
-        </div>
-        <div className="text-xs-right">
-            {/* <Link to="/" className="btn btn-secondary">Back</Link> */}
-            <Link to="/" className="btn btn-primary">Send</Link>
+      <div>
+        <Header />
+        <div className="row">
+          <div className="col-lg-4 col-sm-4 check-container">
+            {this.renderCheck()}
+          </div>
+          <div className="col-lg-8 col-sm-8 menu-container">
+            {this.renderMenu()}
+          </div>
+          <div className="text-xs-right">
+              <Link to="/" className="btn btn-secondary menu-button">Back</Link>
+              <Link to="/" className="btn btn-primary menu-button">Send</Link>
+          </div>
         </div>
       </div>
     );

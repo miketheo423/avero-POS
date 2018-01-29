@@ -2,17 +2,56 @@ html,
 body {
   width: 100%;
   height: 100vh;
+  background: black;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+/****** Table Index *******/
+.table-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8em;
+}
+
+.my-table {
+  display: table;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  line-height: 24px;
+  height: 180px;
+  width: 180px;
+  text-align: center;
+  background: #2ECC71;
+  border-radius: 30px;
+  margin: 20px;
+}
+
+.my-table:hover {
+  background-color: white;
+  color: #2ECC71;
+  border: 1px solid #2ECC71;
+}
+
+.my-table-content {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px;
+}
+
+/******** Table Show ********/
 .check-container {
-  /* height: 90vh; */
-  border: 3px solid black;
+  height: 80vh;
+  background-color: white;
+  overflow: scroll;
 }
 
 .menu-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .menu-item {
@@ -50,7 +89,7 @@ body {
 }
 
 .btn.btn-primary {
-  margin-right: 35px;
+  margin-right: 3.6em;
 }
 
 .btn-primary,
@@ -61,4 +100,10 @@ body {
 .voided {
   color: #D3D3D3;
   text-decoration: line-through;
+}
+
+.brand {
+  color: #00B1E9;
+  padding: .5em;
+  border-bottom: 1px solid #00B1E9
 }

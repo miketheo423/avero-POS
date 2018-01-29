@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchTables, fetchChecks, fetchMenuItems } from '../actions/index';
 import _ from 'lodash';
+import Header from './Header';
 
 
 class TableIndex extends Component {
@@ -19,9 +20,9 @@ class TableIndex extends Component {
         <Link 
           key={table.id} 
           to={`table/${table.id}`}>
-          <li key={table.id} className="list-group-item">
-            {table.number}
-          </li>
+          <div key={table.id} className="my-table">
+            <div className="my-table-content"><span>Table: {table.number}</span></div>
+          </div>
         </Link>
       );
     });
@@ -30,9 +31,12 @@ class TableIndex extends Component {
   render() {
     return (
       <div>
-        <ul>
-          {this.renderTables()}
-        </ul>
+        <Header />
+        <div className="container">
+          <div className="table-container">
+            {this.renderTables()}
+          </div>
+        </div>
       </div>
     );
   }
