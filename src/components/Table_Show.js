@@ -151,8 +151,8 @@ class TableShow extends Component {
             {this.renderMenu()}
           </div>
           <div className="text-xs-right">
-              <Link to="/" className="btn btn-secondary menu-button">Back</Link>
-              <Link to="/" className="btn btn-primary menu-button">Send</Link>
+            <Link to="/" className="btn btn-danger menu-button">Close Check</Link>
+            <Link to="/" className="btn btn-primary menu-button">Send</Link>
           </div>
         </div>
       </div>

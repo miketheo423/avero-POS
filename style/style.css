@@ -9,6 +9,40 @@ a:hover {
   text-decoration: none;
 }
 
+/******* Header  *******/
+.navbar-brand {
+  color: #00B1E9;
+  font-size: 30px;
+}
+
+a.nav-link {
+  color: #00B1E9;
+  padding: .5em;
+  font-size: 24px;
+}
+
+a.nav-link:hover {
+  /* border-bottom: 2px solid #00B1E9; */
+  color: #2ECC71;
+}
+
+h2 {
+  color: #00B1E9;
+}
+
+nav {
+  border-bottom: 1px solid #00B1E9;
+  margin-bottom: 2em;
+}
+
+ul.navbar-nav {
+  float: right;
+}
+
+li {
+  list-style: none;
+}
+
 /****** Table Index *******/
 .table-container {
   display: flex;
@@ -102,8 +136,16 @@ a:hover {
   text-decoration: line-through;
 }
 
-.brand {
-  color: #00B1E9;
-  padding: .5em;
-  border-bottom: 1px solid #00B1E9
+/******** Check Index *********/
+
+h3 {
+  text-align: center;
+  color: white;
+  margin-bottom: 1em;
+  border-bottom: 1px solid #00B1E9;
+}
+
+.check-list {
+  padding: 0;
+  text-align: center;
 }
