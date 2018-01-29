@@ -124,6 +124,8 @@ li {
 
 .btn.btn-primary {
   margin-right: 3.6em;
+  background-color: #2ECC71;
+  border: 1px solid #2ECC71;
 }
 
 .btn-primary,
@@ -152,6 +154,19 @@ h3.check-title {
   border-bottom: 1px solid #00B1E9;
   font-size: 24px;
   padding: .5em;
+}
+
+h4.tax-tip {
+  color:#00B1E9;
+  border-bottom: 1px solid #00B1E9;
+  font-size: 24px;
+  padding: .5em;
+}
+
+.tax-tip-container {
+  position: relative;
+  margin-top: 2em;
+  width: 91%;
 }
 
 .check-list {

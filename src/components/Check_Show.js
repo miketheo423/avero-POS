@@ -84,6 +84,10 @@ renderCheck() {
             <div className="col-lg-6 col-lg-offset-3 check-container">
               <h3 className="check-title">Check: {this.props.oneCheck.id}</h3>
               {this.renderCheck()}
+              <div className="tax-tip-container">
+                <h4 className="tax-tip">Tax: {this.props.oneCheck.tax}</h4>
+                <h4 className="tax-tip">Tip: {this.props.oneCheck.tip}</h4>
+              </div>
             </div>
           </div>
         </div>

@@ -14,7 +14,7 @@ class TableShow extends Component {
   filterCheck() {
     let checks = this.props.checks;
     let currentCheck = checks.find((check) => {
-      return check.tableId === this.props.match.params.id;
+      return check.tableId === this.props.match.params.id && check.closed === false;
     });
     this.lookForActiveCheck(currentCheck);
   }
@@ -33,14 +33,25 @@ class TableShow extends Component {
   }
 
   addItem(checkId, itemId) {
-    console.log('clicked');
-    this.props.addItem(checkId, itemId);
-    this.props.fetchOneCheck(checkId);
+    this.props.addItem(checkId, itemId).then((response) => {
+      let checkId = response.payload.data.checkId;
+      this.props.fetchOneCheck(checkId);
+    });
   }
 
   voidItem(checkId, itemId) {
-    this.props.voidItem(checkId, itemId);
-    this.props.fetchOneCheck(checkId);
+    this.props.voidItem(checkId, itemId).then((response) => {
+      let checkId = response.payload.data.checkId;
+      this.props.fetchOneCheck(checkId);
+    });
+  }
+
+  closeCheck(checkId) {
+    this.props.closeCheck(checkId).then(() => {
+      this.props.fetchChecks().then(() => {
+        this.filterCheck();
+      })
+    });
   }
 
   renderCheck() {
@@ -121,7 +132,6 @@ class TableShow extends Component {
 
   renderMenu() {
     let check = this.props.oneCheck;
-    console.log(check);
     let checkId = this.props.oneCheck.id;
     return _.map(this.props.menu, item => {
       let itemId = item.id;
@@ -132,7 +142,6 @@ class TableShow extends Component {
           onClick={() => this.addItem(checkId, itemId)}>
           <div className="menu-content">
             <span>{item.name}</span>
-            <span>{item.price}</span>
           </div>
         </div>
       )
@@ -153,9 +162,9 @@ class TableShow extends Component {
             {this.renderMenu()}
           </div>
           <div className="text-xs-right">
-            <Link to="/">
-              <button className="btn btn-danger menu-button" onClick={() => this.props.closeCheck(checkId)}>Close Check</button>
-            </Link>
+            {/* <Link to="/"> */}
+              <button className="btn btn-danger menu-button" onClick={() => this.closeCheck(checkId)}>Close Check</button>
+            {/* </Link> */}
             <Link to="/" className="btn btn-primary menu-button">Send</Link>
           </div>
         </div>
@@ -166,6 +175,7 @@ class TableShow extends Component {
 }
 
 function mapStateToProps({ tables, checks, menu, oneCheck}, ownProps) {
+  console.log(oneCheck);
   return { 
     table: tables[ownProps.match.params.id],
     checks: checks,

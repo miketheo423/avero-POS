@@ -7,10 +7,6 @@ import Header from './Header';
 
 class CheckIndex extends Component {
 
-  componentWillMount() {
-    // this.props.fetchChecks();
-  }
-
   filterOpenChecks() {
     let tableName = '';
     let checks = this.props.checks;
