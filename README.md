@@ -1,25 +1,13 @@
-# ReduxSimpleStarter
+# The Greasy Spoon - POS System
+Fun coding challenge, built using React and Redux
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
-
-### Getting Started
-
-There are two methods for getting started with this repo.
-
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
+## Getting Started
+Just follow the steps below to get started!
 
 ```
-> git clone https://github.com/StephenGrider/ReduxSimpleStarter.git
-> cd ReduxSimpleStarter
+> git clone https://github.com/miketheo423/avero-POS.git
+> cd avero-POS
 > npm install
 > npm start
-```
-
-#### Not Familiar with Git?
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
-
-```
-> npm install
-> npm start
+> navigate to localhost:8080
 ```
