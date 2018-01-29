@@ -4,7 +4,7 @@ import _ from 'lodash';
 export default function(state = {}, action) {
   switch(action.type) {
     case FETCH_ONE_CHECK:
-      return _.mapKeys(action.payload.data.orderedItems, 'id');
+      return action.payload.data;
 
     default:
       return state;

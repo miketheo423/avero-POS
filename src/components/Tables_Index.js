@@ -14,11 +14,11 @@ class TableIndex extends Component {
   }
 
   renderTables() {
-    // console.log(this.props.tables);
-    // console.log(this.props.checks);
     return _.map(this.props.tables, table => {
       return (
-        <Link key={table.id} to={`table/${table.id}`}>
+        <Link 
+          key={table.id} 
+          to={`table/${table.id}`}>
           <li key={table.id} className="list-group-item">
             {table.number}
           </li>

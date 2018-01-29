@@ -5,7 +5,7 @@ body {
 }
 
 .check-container {
-  height: 90vh;
+  /* height: 90vh; */
   border: 3px solid black;
 }
 
@@ -30,6 +30,7 @@ body {
 
 .menu-item:hover {
   opacity: 0.7;
+  cursor: pointer;
 }
 
 .menu-content {
@@ -42,4 +43,17 @@ body {
   display: block;
   font-size: 20px;
   font-weight: normal;
+}
+
+.menu-button {
+  margin: 15px;
+}
+
+.btn.btn-primary {
+  margin-right: 35px;
+}
+
+.btn-primary,
+.btn-secondary {
+  font-size: 25px!important;
 }

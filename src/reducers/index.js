@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   tables: TablesReducer,
   checks: ChecksReducer,
   menu: MenuReducer,
-  oneCheck: OneCheckReducer
+  oneCheck: OneCheckReducer,
 });
 
 export default rootReducer;

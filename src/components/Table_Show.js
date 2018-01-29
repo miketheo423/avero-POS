@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { createCheck, fetchMenuItems, fetchOneCheck } from '../actions';
-import axios from 'axios';
-
-const ROOT_URL = 'https://check-api.herokuapp.com';
-const AUTH_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI3M2I1MzJiLWJlZWItNDExYi1hMTg5LWJjZmJlNWVlYzM5MCIsIm5hbWUiOiJqdW5pb3IgIzgifQ.FOOXhSHXPe3oJ0gs_eCJkZK67N5OEEqrG-IMDxBvZ8w';
+import { Link } from 'react-router-dom';
+import { createCheck, fetchChecks, fetchMenuItems, fetchOneCheck, addItem } from '../actions';
 
 
 class TableShow extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.filterCheck();
+  }
+
+  componentDidMount() {
+    // this.filterCheck();
   }
 
   filterCheck() {
     let checks = this.props.checks;
-    let currentCheck = checks.filter((check) => {
+    console.log(checks);
+    let currentCheck = checks.find((check) => {
       return check.tableId === this.props.match.params.id;
     });
     this.lookForActiveCheck(currentCheck);
@@ -23,50 +25,47 @@ class TableShow extends Component {
 
   lookForActiveCheck(currentCheck) {
     let tableId = this.props.match.params.id;
-    let checkId = currentCheck[0].id;
-    if(currentCheck.length < 1) {
-     this.props.createCheck(tableId);
+    if(!currentCheck) {
+     this.props.createCheck(tableId).then((response) => {
+       console.log(response);
+       let checkId = response.payload.data.id;
+       this.props.fetchOneCheck(checkId);
+     });
     } else {
-      console.log('check is here!');
+      console.log(currentCheck);
+      let checkId = currentCheck.id;
       this.props.fetchOneCheck(checkId);
     }
   }
 
-  // fetchCheck(checkId) {
-  //   axios({
-  //     url: `${ROOT_URL}/checks/${checkId}`,
-  //     method: 'get',
-  //     headers: { 'Authorization' : AUTH_KEY }
-  //   })
-  //   .then((response) => {
-  //     this.renderCheck(response);
-  //   });
-  // }
+  addItem(checkId, itemId) {
+    this.props.addItem(checkId, itemId);
+  }
 
   renderCheck() {
-    return _.map(this.props.oneCheck, checkItem => {
+    return _.map(this.props.oneCheck.orderedItems, checkItem => {
       return (
         <div key={checkItem.id} className="check-item list-group-item">
           <span>{checkItem.id}</span>
+          <div className="text-xs-right">
+            <button className="btn btn-danger">Void</button>
+          </div>
         </div>
       )
     });
   }
 
-  // filterCheckItem(checkItem) {
-  //   let menu = this.props.menu;
-  //   let checkItemId = checkItem.itemId;
-  //   let checkItem = menu.filter((item) => {
-  //     return item.itemId === checkItemId
-  //   });
-  //   cosnole.log(checkItem);
-  // }
-
-
   renderMenu() {
+    let check = this.props.oneCheck;
+    console.log(check);
+    let checkId = this.props.oneCheck.id;
     return _.map(this.props.menu, item => {
+      let itemId = item.id;
       return (
-        <div key={item.id} className="menu-item">
+        <div 
+          key={item.id} 
+          className="menu-item"
+          onClick={() => this.addItem(checkId, itemId)}>
           <div className="menu-content">
             <span>{item.name}</span>
             <span>{item.price}</span>
@@ -78,29 +77,30 @@ class TableShow extends Component {
 
   render() {
     return (
-      // <div className="container">
-        <div className="row">
-          <div className="col-lg-4 col-sm-4 check-container">
-            {this.renderCheck()}
-          </div>
-          <div className="col-lg-8 col-sm-8 menu-container">
-            {this.renderMenu()}
-          </div>
+      <div className="row">
+        <div className="col-lg-4 col-sm-4 check-container">
+          {this.renderCheck()}
         </div>
-      // </div>
+        <div className="col-lg-8 col-sm-8 menu-container">
+          {this.renderMenu()}
+        </div>
+        <div className="text-xs-right">
+            {/* <Link to="/" className="btn btn-secondary">Back</Link> */}
+            <Link to="/" className="btn btn-primary">Send</Link>
+        </div>
+      </div>
     );
   }
 
 }
 
-function mapStateToProps({ tables, checks, menu, oneCheck }, ownProps) {
-  console.log(oneCheck);
+function mapStateToProps({ tables, checks, menu, oneCheck}, ownProps) {
   return { 
     table: tables[ownProps.match.params.id],
     checks: checks,
     menu: menu,
-    oneCheck: oneCheck
+    oneCheck: oneCheck,
   }
 }
 
-export default connect(mapStateToProps, { createCheck, fetchMenuItems, fetchOneCheck })(TableShow);
+export default connect(mapStateToProps, { createCheck, fetchMenuItems, fetchOneCheck, addItem, fetchChecks })(TableShow);
