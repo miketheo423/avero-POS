@@ -98,15 +98,23 @@ class TableShow extends Component {
             price = 5;
             break;
         }
-        return (
-          <div key={checkItem.id} className="check-item list-group-item">
-            <span>{itemName} / {price}</span>
-            <div className="text-xs-right">
-              <button className="btn btn-danger" onClick={() => this.voidItem(checkId, itemId)}>Void</button>
+        if(checkItem.voided === false) {
+          return (
+            <div key={checkItem.id} className="check-item list-group-item">
+              <span>{itemName} / {price}</span>
+              <div className="text-xs-right">
+                <button className="btn btn-danger" onClick={() => this.voidItem(checkId, itemId)}>Void</button>
+              </div>
             </div>
-          </div>
-        )
-      });
+          );
+        } else {
+          return (
+            <div key={checkItem.id} className="check-item list-group-item">
+              <span className="voided">{itemName} / {price}</span>
+            </div>
+          );
+        }
+    });
   }
 
   renderMenu() {
