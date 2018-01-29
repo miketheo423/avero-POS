@@ -47,7 +47,7 @@ export function createCheck(tableId) {
 export function closeCheck(checkId) {
   const request = axios({
     url: `${ROOT_URL}/checks/${checkId}/close`,
-    method: 'post',
+    method: 'put',
     headers: { 
       'Authorization' : AUTH_KEY,
       'Content-Type': 'application/json' 

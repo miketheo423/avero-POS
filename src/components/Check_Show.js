@@ -82,6 +82,7 @@ renderCheck() {
         <div className="container">
           <div className="row">
             <div className="col-lg-6 col-lg-offset-3 check-container">
+              <h3 className="check-title">Check: {this.props.oneCheck.id}</h3>
               {this.renderCheck()}
             </div>
           </div>

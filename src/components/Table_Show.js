@@ -140,18 +140,22 @@ class TableShow extends Component {
   }
 
   render() {
+    let checkId = this.props.oneCheck.id;
     return (
       <div>
         <Header />
         <div className="row">
           <div className="col-lg-4 col-sm-4 check-container">
+            <h3 className="check-title">Check: {this.props.oneCheck.id}</h3>
             {this.renderCheck()}
           </div>
           <div className="col-lg-8 col-sm-8 menu-container">
             {this.renderMenu()}
           </div>
           <div className="text-xs-right">
-            <Link to="/" className="btn btn-danger menu-button">Close Check</Link>
+            <Link to="/">
+              <button className="btn btn-danger menu-button" onClick={() => this.props.closeCheck(checkId)}>Close Check</button>
+            </Link>
             <Link to="/" className="btn btn-primary menu-button">Send</Link>
           </div>
         </div>
