@@ -123,15 +123,19 @@ class CheckIndex extends Component {
           <div className="row">
             <div className="col-lg-6">
               <h3>Open Checks</h3>
-              <ul className="check-list">
-                {this.filterOpenChecks()}
-              </ul>
+              <div className="check-list-container">
+                <ul className="check-list">
+                  {this.filterOpenChecks()}
+                </ul>
+              </div>
             </div>
             <div className="col-lg-6">
               <h3>Closed Checks</h3>
-              <ul className="check-list">
-                {this.filterClosedChecks()}
-              </ul>
+              <div className="check-list-container">
+                <ul className="check-list">
+                  {this.filterClosedChecks()}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

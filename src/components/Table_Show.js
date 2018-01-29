@@ -136,10 +136,7 @@ class TableShow extends Component {
     return _.map(this.props.menu, item => {
       let itemId = item.id;
       return (
-        <div 
-          key={item.id} 
-          className="menu-item"
-          onClick={() => this.addItem(checkId, itemId)}>
+        <div key={item.id} className="menu-item" onClick={() => this.addItem(checkId, itemId)}>
           <div className="menu-content">
             <span>{item.name}</span>
           </div>
@@ -162,9 +159,7 @@ class TableShow extends Component {
             {this.renderMenu()}
           </div>
           <div className="text-xs-right">
-            {/* <Link to="/"> */}
-              <button className="btn btn-danger menu-button" onClick={() => this.closeCheck(checkId)}>Close Check</button>
-            {/* </Link> */}
+            <button className="btn btn-danger menu-button" onClick={() => this.closeCheck(checkId)}>Close Check</button>
             <Link to="/" className="btn btn-primary menu-button">Send</Link>
           </div>
         </div>

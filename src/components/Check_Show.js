@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchOneCheck, fetchChecks } from '../actions';
-
 import Header from './Header';
 
 class CheckShow extends Component {
@@ -67,11 +66,19 @@ renderCheck() {
           price = '$5';
           break;
       }
-      return (
-        <div key={checkItem.id} className="check-item list-group-item">
-          <span className="closed">{itemName} / {price}</span>
-        </div>
-      );
+      if(checkItem.voided === false) {
+        return (
+          <div key={checkItem.id} className="check-item list-group-item">
+            <span>{itemName} / {price}</span>
+          </div>
+        );
+      } else {
+        return (
+          <div key={checkItem.id} className="check-item list-group-item">
+            <span className="voided">{itemName} / {price}</span>
+          </div>
+        );
+      }
   });
 }
 

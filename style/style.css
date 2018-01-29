@@ -129,7 +129,7 @@ li {
 }
 
 .btn-primary,
-.btn-secondary {
+.btn-danger.menu-button {
   font-size: 25px!important;
 }
 
@@ -172,4 +172,10 @@ h4.tax-tip {
 .check-list {
   padding: 0;
   text-align: center;
+}
+
+.check-list-container {
+  height: 60vh;
+  background-color: white;
+  overflow: scroll;
 }
